@@ -1,0 +1,412 @@
+/* CSS Reset */
+
+* {
+  /* These lines set the padding and margin of all elements to zero. This removes any default spacing that browsers might apply to elements. */
+  padding: 0;  
+  margin: 0;
+/* 
+  This line sets the box-sizing property of all elements to border-box. This means that the width and height properties include the padding and border, but not the margin. */
+  box-sizing: border-box;
+
+  /* This sets the font-family for all elements to "Poppins", a specific font, and if "Poppins" is not available, it falls back to the generic sans-serif font family. */
+  font-family: "Poppins", sans-serif;
+}
+/*1. In summary, this block of code ensures a consistent starting point for CSS styles by resetting or normalizing default browser styles, setting a specific font, and adjusting box sizing to include padding and border in element dimensions. */
+
+
+
+
+
+
+/* Body styling */
+
+/* This block of code targets the body element of an HTML document and applies the following styling: */
+body {
+
+  /* This sets the height of the body element to 100% of the viewport height (vh). This means the body element will take up the full vertical space of the browser window, regardless of its content. This is often used to create full-page layouts */
+  height: 100vh;
+
+  /* This sets the background of the body element to a linear gradient. The gradient starts with the color #323541 at the top and transitions to the color #531515 at the bottom. The 50% specifies the point at which the transition occurs, meaning the transition from the first color to the second color happens at the halfway point vertically, creating a smooth gradient effect from top to bottom. */
+  background: linear-gradient(#323541 50%, #531515 50%);
+}
+
+/* this block of code creates a full-page layout where the background of the body element consists of a linear gradient that transitions from a dark grayish color at the top to a dark red color at the bottom. The height of the body element is set to occupy the full height of the viewport. */
+
+
+
+
+
+
+/* Main container styling */
+
+/* This block of code styles a container element with the class .container */
+.container {
+
+  /* This property positions the container element absolutely within its containing element, which means it's positioned relative to its nearest positioned ancestor (or the initial containing block if there's none). */
+  position: absolute;
+
+  /* This moves the container element horizontally and vertically by 50% of its own width and height respectively. This effectively centers the container both horizontally and vertically within its containing element. */
+   transform: translate(-50%, -50%);
+
+   /* These properties position the top-left corner of the container element at 50% of the height and width of its containing element, which combined with the transform property centers it precisely */
+  top: 50%;
+  left: 50%;
+
+  /* This sets the width of the container to 90% of the viewport width (vw), meaning it will take up 90% of the width of the browser window. */
+  width: 90vw;
+
+
+  /* This sets the maximum width of the container to 37.5em. This ensures that the container doesn't exceed a certain width on larger screens, maintaining readability and preventing overly long lines of text. */
+  max-width: 37.5em;
+
+  /* This sets the background color of the container to a dark grayish color #606465. */
+  background-color:#203db0;
+
+
+  /* This adds padding inside the container, creating space between the content and the container's edges. The padding is set to 1.8em on all sides. */
+  padding: 1.8em;
+
+
+  /* This rounds the corners of the container, giving it a slightly rounded appearance. The radius is set to 0.6em */
+  border-radius: 0.6em;
+
+  /* This adds a box shadow to the container. The shadow is positioned 0 horizontally, 1em vertically, with a blur radius of 3em, and its color is a semi-transparent dark color (rgba(2, 9, 38, 0.25)). This creates a subtle shadow effect, giving the container a sense of depth. */
+  box-shadow: 0 1em 3em rgba(2, 9, 38, 0.25);
+}
+/* In summary, this block of code styles a container element to be centered both horizontally and vertically within its containing element, with a maximum width, background color, padding, rounded corners, and a subtle box shadow for added visual appeal. */
+
+
+
+
+
+
+
+
+/* Styling for the search container */
+
+/* This block of code styles a container element with the class .search-container */
+.search-container {
+
+  /* This sets the container element to be displayed as a grid container. This means its direct children will be laid out in a grid layout. */
+  display: grid;
+
+  /* This defines the columns of the grid. It specifies two columns, where the first column occupies 9 fractional units (fr) of the available space, and the second column occupies 3 fractional units. Fractional units distribute the available space proportionally among the columns based on their fractions */
+  grid-template-columns: 9fr 3fr;
+
+
+  /* This sets the gap or spacing between grid items (columns in this case) to 1em. This creates space between the columns, making them visually distinct from each other. */
+  gap: 1em;
+
+  /* This adds a bottom margin of 1.2em to the container element. This creates space between this container and the elements below it, providing visual separation. */
+  margin-bottom: 1.2em;
+}
+
+/* In summary, this block of code creates a grid layout for the container element .search-container, with two columns whose widths are defined proportionally. There's a gap between the columns, and a bottom margin is added to provide spacing below the container. This layout is commonly used for organizing content, such as search forms or input fields alongside buttons or other related elements. */
+
+
+
+
+
+
+/* Styling for the search input */
+
+
+/* This block of code targets the input elements within the container with the class .search-container and applies the following styling */
+.search-container input {
+
+
+  /* This sets the font size of the input elements to 1em, which is equal to the font size of the parent element or the default font size of the browser. */
+  font-size: 1em;
+
+  /* This sets the padding of the input elements. It specifies 0.6em of padding on the top and bottom, and 0.3em of padding on the left and right sides. This adds space inside the input element, creating some distance between the text and the edges of the input box. */
+  padding: 0.6em 0.3em;
+
+
+  /* This removes the border from the input elements, effectively removing any visible outline around the input box. */
+  border: none;
+
+
+  /* This removes the outline that browsers typically apply to focused elements. It's often used for aesthetic purposes or when custom styling is applied to focused elements. */
+  outline: none;
+
+
+  /* This sets the text color of the input elements to a dark purplish color #1f194c. */
+  color: #151552;
+
+
+  /* This adds a border to the bottom of the input elements. The border has a width of 1.5px and is solid, with the same color as the text (#1f194c). This creates an underline effect below the input box, serving as a visual indicator or separator. */
+  border-bottom: 1.5px solid #7eb51f;
+}
+
+/* Styling for the focused search input */
+.search-container input:focus {
+  border-color: #5372f0;
+}
+/* In summary, this block of code styles the input elements within the .search-container to have a certain font size, padding, text color, and a bottom border, while removing the default border and outline typically applied by browsers. This styling is commonly used for search input fields to provide a clean and consistent appearance. */
+
+
+
+
+
+
+/* Styling for the search button */
+
+/* This block of code targets the <button> elements within the container with the class .search-container  */
+.search-container button {
+
+  /* This sets the font size of the button elements to 1em, which is equal to the font size of the parent element or the default font size of the browser. */
+  font-size: 1em;
+
+  /* This sets the border radius of the button elements to 2em, resulting in rounded corners. This creates a visually pleasing effect, making the buttons appear softer and more approachable. */
+  border-radius: 2em;
+
+  /* This sets the background color of the button elements to a shade of blue #5372f0. */
+  background-color: #5372f0;
+
+  /* This removes the border from the button elements, ensuring there is no visible border around the buttons. */
+  border: none;
+
+  /* This removes the outline that browsers typically apply to focused elements. It's often used for aesthetic purposes or when custom styling is applied to focused elements. */
+  outline: none;
+
+  /* This sets the text color of the button elements to white (#ffffff), ensuring good contrast against the background color. */
+  color: #ffffff;
+
+  /* This changes the mouse cursor to a pointer when hovering over the button elements. This provides a visual cue to users that the buttons are clickable. */
+  cursor: pointer;
+}
+/* In summary, this block of code styles the button elements within the .search-container to have a certain font size, border radius, background color, text color, and cursor behavior. The styling creates visually appealing buttons with rounded corners and a consistent appearance. */
+
+
+
+
+/* Styling for the result container */
+
+/* This block of code targets an element with the id result */
+#result {
+
+  /* This sets the text color of the element with the id result to a shade of grayish-blue (#575a7b). This color will be applied to any text content within the element. */
+  color: #ebeded;
+
+  /* This sets the line height of the text within the element to 2em. Line height refers to the vertical spacing between lines of text. In this case, it's set to 2em, which means the space between each line of text will be equivalent to twice the size of the font used in the element. */
+  line-height: 2em;
+}
+/* In summary, this block of code styles the element with the id result to have a specific text color and line height. The text color is a shade of grayish-blue, and the line height is set to provide adequate spacing between lines of text for better readability. */
+
+
+
+
+
+
+
+
+/* Styling for images within the result container */
+
+/* This block of code targets <img> elements within the element with the id result */
+#result img {
+
+  /* This sets the display property of the <img> elements to "block". This means the images will behave as block-level elements, which by default take up the full width available and start on a new line. This ensures that other elements won't flow alongside the images horizontally. */
+  display: block;
+
+  /* This sets the maximum width of the <img> elements to 12.5em. This restricts the width of the images to a maximum size, ensuring they don't exceed a certain width, which can be particularly useful for responsive design to prevent images from becoming too large on smaller screens. */
+  max-width: 12.5em;
+
+  /* This sets the margin of the <img> elements to "auto". This horizontally centers the images within their containing element. By setting both the left and right margins to "auto", the browser automatically distributes the available horizontal space evenly on both sides of the images, effectively centering them. */
+  margin: auto;
+}
+/* In summary, this block of code styles the <img> elements within the element with the id result to be displayed as block-level elements, limits their maximum width, and horizontally centers them within their containing element. This ensures that images within the #result element are appropriately sized and centered, providing a visually pleasing layout. */
+
+
+
+
+
+
+/* Styling for the drink name within the result container */
+
+/* This block of code targets <h2> elements within the element with the id result */
+#result h2 {
+
+  /* This sets the font size of the <h2> elements to 1.25em, which is equivalent to 125% of the parent element's font size. */
+  font-size: 1.25em;
+
+  /* : This sets the margins of the <h2> elements. It specifies 0.8em of margin for the top, 0 for the right and left, and 1.6em for the bottom. This creates spacing around the <h2> element, providing visual separation from surrounding elements. */
+  margin: 0.8em 0 1.6em 0;
+
+  /* This aligns the text within the <h2> elements to the center of the element. This ensures that the heading text is horizontally centered within its containing element. */
+  text-align: center;
+
+  /* This transforms the text of the <h2> elements to uppercase. This makes all text within the <h2> elements appear in uppercase letters, regardless of how it's entered in the HTML markup. */
+  text-transform: uppercase;
+
+  /* This sets the font weight of the <h2> elements to 600, which is typically a bold font weight. This makes the heading text appear slightly bolder than normal. */
+  font-weight: 600;
+
+  /* This sets the letter spacing of the <h2> elements to 0.05em. This adds a small amount of space between each letter in the heading text, enhancing readability and visual appeal. */
+  letter-spacing: 0.05em;
+
+  /* This sets the text color of the <h2> elements to a dark purplish color #1f194c. */
+  color: #4bbdf6;
+
+  /* This sets the position property of the <h2> elements to "relative". This allows the <h2> elements to be positioned relative to their normal position in the document flow, which can be useful if absolute or relative positioning is used for child elements. */
+  position: relative;
+}
+
+/* In summary, this block of code styles the <h2> elements within the element with the id result to have a specific font size, margin, text alignment, text transformation, font weight, letter spacing, text color, and positioning. These styles ensure that the headings within the #result element are visually consistent and effectively styled for readability and aesthetics. */
+
+
+
+
+
+
+
+
+/* Styling for the underline below the drink name */
+
+/* This block of CSS code is using a pseudo-element (::before) to create a decorative underline below <h2> elements within the element with the id result. */
+#result h2:before {
+
+  /* This line sets the content property of the pseudo-element to an empty string. This is necessary for the pseudo-element to generate and be displayed. */
+  content: "";
+
+  /* This line sets the positioning of the pseudo-element to "absolute", meaning it is positioned relative to its closest positioned ancestor (if there is one), or to the initial containing block otherwise. */
+  position: absolute;
+
+  /* This line sets the width of the pseudo-element to 15% of the width of its containing <h2> element. This determines how wide the decorative underline will be. */
+  width: 15%;
+
+  /* This line sets the height of the pseudo-element to 3 pixels. This determines the thickness of the decorative underline. */
+  height: 3px;
+
+  /* This line sets the background color of the pseudo-element to a shade of blue #5372f0. This determines the color of the decorative underline. */
+  background-color: #5372f0;
+
+  /* This line positions the left edge of the pseudo-element horizontally at 42.5% of the width of its containing <h2> element. This horizontally centers the decorative underline within the heading. */
+  left: 42.5%;
+
+  /* This line positions the bottom edge of the pseudo-element 0.3em above the bottom edge of its containing <h2> element. This places the decorative underline slightly below the text of the heading. */
+  bottom: -0.3em;
+}
+/* In summary, this block of code creates a decorative underline below <h2> elements within the #result element. The underline has a specified width, height, color, and position relative to the <h2> element's dimensions. It enhances the visual appearance of the headings, providing a decorative element below them. */
+
+
+
+
+
+
+
+/* Styling for the headings within the result container */
+
+/* This block of code targets <h3> elements within the element with the id result */
+#result h3 {
+
+  /* This sets the font size of the <h3> elements to 1.1em, which is 110% of the parent element's font size. This determines the size of the text within the <h3> elements. */
+  font-size: 1.1em;
+
+  /* This sets the font weight of the <h3> elements to 600, which is typically a bold font weight. This makes the text within the <h3> elements appear slightly bolder than normal. */
+  font-weight: 600;
+
+  /* This sets the bottom margin of the <h3> elements to 0.2em. This creates space between the <h3> elements and any content that follows them, improving readability and visual separation. */
+  margin-bottom: 0.2em;
+
+  /* This sets the text color of the <h3> elements to a dark purplish color #1f194c. This determines the color of the text within the <h3> elements. */
+  color: #76decb;
+}
+/* In summary, this block of code styles the <h3> elements within the #result element to have a specific font size, font weight, bottom margin, and text color. These styles ensure that the headings within the #result element are visually consistent and effectively styled for readability and aesthetics. */
+
+
+
+
+/* Styling for the list of ingredients within the result container */
+
+/* This block of code targets <ul> elements within the element with the id result */
+#result ul {
+
+  /* This sets the bottom margin of the <ul> elements to 1em. This creates space between the <ul> elements and any content that follows them, improving readability and visual separation. */
+  margin-bottom: 1em;
+
+  /* This sets the left margin of the <ul> elements to 1.8em. This creates space between the <ul> elements and the left edge of their containing element, providing indentation for the list items. */
+  margin-left: 1.8em;
+
+  /* This sets the <ul> elements to be displayed as a grid container. This means their child list items will be laid out in a grid layout. */
+  display: grid;
+
+  /* This defines the columns of the grid within the <ul> elements. It specifies two columns, where each column's width is determined by the content it contains (auto). This allows the list items to be displayed in two columns, with the width of each column adjusted based on the content. */
+  grid-template-columns: auto auto;
+}
+/* In summary, this block of code styles the <ul> elements within the #result element to have specific margins, and it arranges the list items in a grid layout with two columns. This layout provides visual organization and improves readability for lists within the #result element. */
+
+
+
+
+
+
+
+
+
+
+/* Styling for individual list items within the result container */
+
+
+/* This block of code targets <li> elements within the element with the id result */
+#result li {
+
+  /* This sets the bottom margin of the <li> elements to 0.3em. This creates space between each list item, vertically stacking them with some space in between. */
+  margin-bottom: 0.3em;
+}
+/* In summary, this block of code adds a bottom margin to each list item within the #result element, providing spacing between the list items and improving the visual presentation of the list. */
+
+
+
+
+
+
+
+
+/* Styling for the paragraph within the result container */
+
+/* This block of code targets <p> elements within the element with the id result */
+#result p {
+
+  /* This sets the text alignment of the <p> elements to "justify". Text justification aligns the text along both the left and right edges of the container, creating a smooth and even appearance. */
+  text-align: justify;
+
+  /* This sets the font weight of the <p> elements to 400, which is typically the normal or regular font weight. This ensures that the text within the <p> elements appears with a standard thickness. */
+  font-weight: 400;
+
+  /* This sets the font size of the <p> elements to 0.95em, which is equivalent to 95% of the parent element's font size. This determines the size of the text within the <p> elements, making it slightly smaller than the default font size. */
+  font-size: 0.95em;
+}
+/* In summary, this block of code styles the <p> elements within the #result element to have justified text alignment, a normal font weight, and a slightly reduced font size. These styles enhance the readability and appearance of paragraphs within the #result element. */
+
+
+
+
+
+
+
+
+/* Styling for the message displayed in case of empty input */
+
+/* This block of code targets elements with the class .msg */
+.msg {
+
+  /* This sets the text alignment of the elements with the class .msg to "center". This means that any text content within these elements will be horizontally centered within the container. */
+  text-align: center;
+}
+/* In summary, this block of code ensures that any element with the class .msg has its text content centered horizontally within the element. */
+
+
+
+
+/* Media query for smaller screens */
+
+
+/* This block of code is a media query targeting screens with a maximum width of 600 pixels. Inside the media query, it applies the following styling to elements with the class .container: */
+@media screen and (max-width: 600px) {
+  .container {
+
+    /* This sets the font size of elements with the class .container to 14 pixels when the screen width is 600 pixels or less. This adjustment in font size is commonly used in responsive web design to ensure readability and proper layout on smaller screens like mobile devices. */
+      font-size: 14px;
+  }
+}
+

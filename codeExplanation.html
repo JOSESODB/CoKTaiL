@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Cocktail App</title>
+    <!-- Google Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+    <!-- External Stylesheet -->
+    <link rel="stylesheet" href="./CocktailApp.css" />
+</head>
+<body>
+    <!-- Container for the entire application -->
+    <div class="container">
+        <!-- Container for the search input and button -->
+        <div class="search-container">
+            <!-- Input field for typing cocktail names -->
+            <input
+                type="text"
+                placeholder="Type a cocktail name..."
+                id="user-inp"
+                value="margarita"
+            />
+            <!-- Button to trigger the search -->
+            <button id="search-btn">Search</button>
+        </div>
+        <!-- Container for displaying search results -->
+        <div id="result"></div>
+    </div>
+    <!-- External JavaScript -->
+    <script src="./CocktailApp.js"></script>
+</body>
+</html>
+
+
+<!-- CSS -->
+
+/* CSS Reset */
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", sans-serif;
+}
+
+/* Body styling */
+body {
+    height: 100vh;
+    background: linear-gradient(#5372f0 50%, #000000 50%);
+}
+
+/* Main container styling */
+.container {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 90vw;
+    max-width: 37.5em;
+    background-color: #ffffff;
+    padding: 1.8em;
+    border-radius: 0.6em;
+    box-shadow: 0 1em 3em rgba(2, 9, 38, 0.25);
+}
+
+/* Styling for the search container */
+.search-container {
+    display: grid;
+    grid-template-columns: 9fr 3fr;
+    gap: 1em;
+    margin-bottom: 1.2em;
+}
+
+/* Styling for the search input */
+.search-container input {
+    font-size: 1em;
+    padding: 0.6em 0.3em;
+    border: none;
+    outline: none;
+    color: #1f194c;
+    border-bottom: 1.5px solid #1f194c;
+}
+
+/* Styling for the focused search input */
+.search-container input:focus {
+    border-color: #5372f0;
+}
+
+/* Styling for the search button */
+.search-container button {
+    font-size: 1em;
+    border-radius: 2em;
+    background-color: #5372f0;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+/* Styling for the result container */
+#result {
+    color: #575a7b;
+    line-height: 2em;
+}
+
+/* Styling for images within the result container */
+#result img {
+    display: block;
+    max-width: 12.5em;
+    margin: auto;
+}
+
+/* Styling for the drink name within the result container */
+#result h2 {
+    font-size: 1.25em;
+    margin: 0.8em 0 1.6em 0;
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: #1f194c;
+    position: relative;
+}
+
+/* Styling for the underline below the drink name */
+#result h2:before {
+    content: "";
+    position: absolute;
+    width: 15%;
+    height: 3px;
+    background-color: #5372f0;
+    left: 42.5%;
+    bottom: -0.3em;
+}
+
+/* Styling for the headings within the result container */
+#result h3 {
+    font-size: 1.1em;
+    font-weight: 600;
+    margin-bottom: 0.2em;
+    color: #1f194c;
+}
+
+/* Styling for the list of ingredients within the result container */
+#result ul {
+    margin-bottom: 1em;
+    margin-left: 1.8em;
+    display: grid;
+    grid-template-columns: auto auto;
+}
+
+/* Styling for individual list items within the result container */
+#result li {
+    margin-bottom: 0.3em;
+}
+
+/* Styling for the paragraph within the result container */
+#result p {
+    text-align: justify;
+    font-weight: 400;
+    font-size: 0.95em;
+}
+
+/* Styling for the message displayed in case of empty input */
+.msg {
+    text-align: center;
+}
+
+/* Media query for smaller screens */
+@media screen and (max-width: 600px) {
+    .container {
+        font-size: 14px;
+    }
+}
+
+<!-- JavaScript -->
+// Get reference to the element with ID "result"
+let result = document.getElementById("result");
+
+// Get reference to the button element with ID "search-btn"
+let searchBtn = document.getElementById("search-btn");
+
+// Define the URL for fetching cocktail data from an API
+let url = "https://thecocktaildb.com/api/json/v1/1/search.php?s=";
+
+// Define a function to handle fetching cocktail data and displaying it
+let getInfo = () => {
+  // Get the value entered by the user in the input field
+  let userInp = document.getElementById("user-inp").value;
+
+  // Check if the input field is empty
+  if (userInp.length == 0) {
+    // If empty, display a message indicating the input field cannot be empty
+    result.innerHTML = `<h3 class="msg">The input field cannot be empty</h3>`;
+  } else {
+    // If not empty, fetch cocktail data based on user input
+    fetch(url + userInp)
+      .then((response) => response.json())
+      .then((data) => {
+        // Clear the input field after fetching data
+        document.getElementById("user-inp").value = "";
+
+        // Log the fetched data for debugging
+        console.log(data);
+        console.log(data.drinks[0]);
+        let myDrink = data.drinks[0];
+        console.log(myDrink.strDrink);
+        console.log(myDrink.strDrinkThumb);
+        console.log(myDrink.strInstructions);
+
+        // Initialize variables to track ingredients and measurements
+        let count = 1;
+        let ingredients = [];
+
+        // Loop through the drink object to extract ingredients and measurements
+        for (let i in myDrink) {
+          let ingredient = "";
+          let measure = "";
+          if (i.startsWith("strIngredient") && myDrink[i]) {
+            ingredient = myDrink[i];
+            if (myDrink[`strMeasure` + count]) {
+              measure = myDrink[`strMeasure` + count];
+            } else {
+              measure = "";
+            }
+            count += 1;
+            ingredients.push(`${measure} ${ingredient}`);
+          }
+        }
+
+        // Log the extracted ingredients for debugging
+        console.log(ingredients);
+
+        // Update the HTML content to display the drink details
+        result.innerHTML = `
+          <img src=${myDrink.strDrinkThumb}>
+          <h2>${myDrink.strDrink}</h2>
+          <h3>Ingredients:</h3>
+          <ul class="ingredients"></ul>
+          <h3>Instructions:</h3>
+          <p>${myDrink.strInstructions}</p>
+        `;
+
+        // Get reference to the list element for ingredients
+        let ingredientsCon = document.querySelector(".ingredients");
+
+        // Loop through the ingredients array and create list items for each ingredient
+        ingredients.forEach((item) => {
+          let listItem = document.createElement("li");
+          listItem.innerText = item;
+          ingredientsCon.appendChild(listItem);
+        });
+      })
+      .catch(() => {
+        // If an error occurs during fetching, display a message indicating the input is invalid
+        result.innerHTML = `<h3 class="msg">Please enter a valid input</h3>`;
+      });
+  }
+};
+
+// Add an event listener to execute getInfo function when the window loads
+window.addEventListener("load", getInfo);
+
+// Add an event listener to execute getInfo function when the search button is clicked
+searchBtn.addEventListener("click", getInfo);
